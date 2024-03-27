@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>WoofWatch</title>
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-database.js"></script>
+    <!-- import the webpage's javascript file -->
+    <script src="/script.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("QB8DxBxQFHVazdYlg");
+        })();
+
+        // Function to send HTTP GET request
+        function sendRequest(url) {
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => console.log(data))
+                .catch(error => console.error('There was a problem with the fetch operation:', error));
+        }
+    </script>
+    <style>
+        /* CSS to center content */
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            padding: 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <img src="https://cdn.glitch.global/f9b6346d-a0b8-4f62-8fe3-2937837e3f72/project_image.png?v=1711454161175" alt="WoofWatch Logo" />
+
+        <h1>Donal Murphy - 20100051 Project: WoofWatch</h1>
+
+        <p>
+            Image taken of your pet at <span id="time"></span>:<br>
+            <img id="photo" class="large" alt="Photo"/>
+        </p>
+        <p>
+            Please find a link to a local live stream: <br> <a href="http://192.168.8.116:8000/">192.168.8.116:8000</a>
+        </p>
+        <p>
+            Please find a link to public URL: <br> <a href="https://woofwatch.ngrok.app/">woofwatch.ngrok.app</a>
+        </p>
+
+        <!-- Links for sending requests -->
+        <a href="http://192.168.8.116:5000/open">Open Door</a>
+        <a href="http://192.168.8.116:5000/close">Close Door</a>
+        <a href="http://192.168.8.116:5000/stop">Stop Motor Control</a><br><br>
+    </div>
+</body>
